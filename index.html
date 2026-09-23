@@ -1,40 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Safari Atelier | Tailor-made Kenya Safaris</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pole Pole creates tailor-made safari journeys across Kenya and Tanzania." />
+  <meta name="theme-color" content="#f6efe5" />
+  <title>Pole Pole | Kenya & Tanzania Safaris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-<header class="main-header">
-  <div class="brand" onclick="showHome()">
-    <div class="brand-name">SAFARI ATELIER</div>
-    <div class="brand-divider"></div>
-    <div class="brand-caption">
-      TAILOR-MADE JOURNEYS<br>
-      EAST AFRICA
+  <header class="site-header">
+    <button class="brand" type="button" onclick="showHome()" aria-label="Pole Pole home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 42"><path d="M31 5c-8 0-13 4-16 10 6-2 12-1 16 2-3-8 1-12 6-14-1 5 0 9 4 13 4-3 9-4 15-3-2-6-7-10-14-10-1 0-3 1-4 2-4-4-10-5-15-3Z"/><path d="M34 15c-1 7-1 13 0 20M24 36h21M14 39h42"/></svg>
+      </span>
+      <span class="brand-copy"><strong>Pole Pole</strong><small>Kenya · Tanzania</small></span>
+    </button>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#trips">Trips</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#why-us">Why us</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="btn btn-primary header-cta" type="button" onclick="startPlanning()">Plan Your Safari</button>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand-col">
+        <button class="brand footer-brand" type="button" onclick="showHome()" aria-label="Pole Pole home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 42"><path d="M31 5c-8 0-13 4-16 10 6-2 12-1 16 2-3-8 1-12 6-14-1 5 0 9 4 13 4-3 9-4 15-3-2-6-7-10-14-10-1 0-3 1-4 2-4-4-10-5-15-3Z"/><path d="M34 15c-1 7-1 13 0 20M24 36h21M14 39h42"/></svg>
+          </span>
+          <span class="brand-copy"><strong>Pole Pole</strong><small>Safari, softly done.</small></span>
+        </button>
+        <p>Tailor-made Kenya & Tanzania safaris, handpicked stays and meaningful journeys at a gentler pace.</p>
+      </div>
+
+      <div class="footer-contact" id="contact">
+        <div class="footer-icon" aria-hidden="true">☎</div>
+        <div><small>Talk to us</small><a href="tel:+989124650161">+98 912 465 0161</a></div>
+      </div>
+
+      <div class="footer-telegram">
+        <div class="footer-icon" aria-hidden="true">✈</div>
+        <div><small>Quick questions?</small><a class="telegram-btn" href="#" onclick="return false;">Telegram Bot</a></div>
+      </div>
     </div>
-  </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pole Pole. All rights reserved.</span>
+      <span>Kenya · Tanzania · East Africa</span>
+    </div>
+  </footer>
 
-  <nav>
-    <a href="#destinations">Destinations</a>
-    <a href="#trips">Sample Trips</a>
-    <a href="#why-us">Why Us</a>
-    <a href="#about">About Kenya</a>
-  </nav>
-
-  <button class="header-cta" onclick="startPlanning()">Start Planning</button>
-</header>
-
-<main id="app"></main>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,53 +1,20 @@
-# Safari Atelier — Kenya Safari MVP
+# Pole Pole Safari Website
 
-A simple static front-end MVP for a tailor-made Kenya safari website.
-
-## Files
-- `index.html`
-- `styles.css`
-- `app.js`
+Static HTML/CSS/JavaScript website for the Pole Pole Kenya & Tanzania safari brand.
 
 ## Run locally
-The simplest option is to double-click `index.html`.
+Open `index.html` directly, or serve the folder with any static server.
 
-For a better local development experience, use VS Code + Live Server.
+## GitHub Pages
+Push this folder to a GitHub repository and enable **Settings → Pages → Deploy from a branch**.
 
-## n8n integration
-In `app.js`, find:
+## n8n later
+The enquiry flow is already prepared for a webhook.
+
+In `app.js`, set:
 
 ```js
-const N8N_WEBHOOK_URL = "";
+const N8N_WEBHOOK_URL = 'https://YOUR-N8N-DOMAIN/webhook/pole-pole-enquiry';
 ```
 
-Replace it with your n8n Production Webhook URL.
-
-The form will POST a JSON object with:
-- regions
-- trip style
-- travel date
-- duration
-- experiences
-- accommodation
-- budget
-- traveller information
-- contact information
-
-## GitHub
-Example:
-
-```bash
-git init
-git add .
-git commit -m "Initial safari MVP"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-git push -u origin main
-```
-
-## Important before production
-- Replace external Unsplash URLs with locally hosted licensed images.
-- Add form validation.
-- Add a privacy notice / consent text.
-- Protect your n8n webhook.
-- Add analytics.
-- Review legal requirements before accepting payments or selling travel packages.
+The form will POST the full planner data as JSON. Until a webhook URL is added, submission is logged in the browser console and the success page is shown.
