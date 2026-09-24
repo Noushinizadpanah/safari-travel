@@ -7,32 +7,32 @@ let currentStep = 1;
 const N8N_WEBHOOK_URL = '';
 
 const IMG = {
-  hero: 'assets/hero-lioness.jpg',
-  amboseli: 'assets/amboseli-elephant.jpg',
-  mara: 'assets/mara-zebra.jpg',
-  serengeti: 'assets/serengeti-buffalo.jpg',
-  tarangire: 'assets/tarangire-antelope.jpg',
-  giraffes: 'assets/giraffes.jpg',
-  giraffeExperience: 'assets/giraffe-experience.jpg',
-  galleryGiraffe: 'assets/giraffe-portrait.jpg',
-  galleryElephants: 'assets/elephant-family.jpg',
-  galleryLions: 'assets/lion-pride.jpg',
-  galleryMarabou: 'assets/marabou.jpg',
-  galleryZebras: 'assets/zebras-landscape.jpg',
-  galleryJacana: 'assets/african-jacana.jpg',
+  hero: 'hero-lioness.jpg',
+  amboseli: 'amboseli-elephant.jpg',
+  mara: 'mara-zebra.jpg',
+  serengeti: 'serengeti-buffalo.jpg',
+  tarangire: 'tarangire-antelope.jpg',
+  giraffes: 'giraffes.jpg',
+  giraffeExperience: 'giraffe-experience.jpg',
+  galleryGiraffe: 'giraffe-portrait.jpg',
+  galleryElephants: 'elephant-family.jpg',
+  galleryLions: 'lion-pride.jpg',
+  galleryMarabou: 'marabou.jpg',
+  galleryZebras: 'zebras-landscape.jpg',
+  galleryJacana: 'african-jacana.jpg',
 
   // Reserved for the planner so the home page never repeats its own photos.
-  plannerZebra: 'assets/zebra-rear.jpg',
-  plannerGiraffe: 'assets/giraffe-head.jpg',
-  plannerGiraffeDetail: 'assets/giraffe-detail.jpg',
-  plannerMarabou: 'assets/marabou-portrait.jpg',
-  plannerEland: 'assets/eland.jpg',
-  plannerEagle: 'assets/fish-eagle.jpg',
+  plannerZebra: 'zebra-rear.jpg',
+  plannerGiraffe: 'giraffe-head.jpg',
+  plannerGiraffeDetail: 'giraffe-detail.jpg',
+  plannerMarabou: 'marabou-portrait.jpg',
+  plannerEland: 'eland.jpg',
+  plannerEagle: 'fish-eagle.jpg',
 
-  zanzibar: 'assets/zanzibar-inspired.png',
-  ngorongoro: 'assets/ngorongoro-inspired.png',
-    beach: 'assets/zanzibar-inspired.png',
-    walking: 'assets/zebras-landscape.jpg'
+  zanzibar: 'zanzibar-inspired.png',
+  ngorongoro: 'ngorongoro-inspired.png',
+    beach: 'zanzibar-inspired.png',
+    walking: 'zebras-landscape.jpg'
 };
 
 const formData = {
