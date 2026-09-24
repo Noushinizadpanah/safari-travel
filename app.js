@@ -85,7 +85,7 @@ function showHome(){
           <button class="btn btn-primary" type="button" onclick="startPlanning()">Plan Your Safari →</button>
           <a class="btn btn-secondary" href="#trips">Explore Itineraries</a>
         </div>
-        <div class="hero-note"><img class="note-tree" src="assets/acacia.svg" alt="">Hakuna Matata — travel <em>pole pole.</em></div>
+        <div class="hero-note"><img class="note-tree" src="acacia.svg" alt="">Hakuna Matata — travel <em>pole pole.</em></div>
       </div>
       <div class="hero-media"><img src="${IMG.hero}" alt="A lioness standing on a sunlit rock in the savannah" fetchpriority="high" width="2048" height="1366"></div>
     </section>
