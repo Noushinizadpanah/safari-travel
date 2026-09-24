@@ -29,12 +29,10 @@ const IMG = {
   plannerEland: 'assets/eland.jpg',
   plannerEagle: 'assets/fish-eagle.jpg',
 
-  zanzibar: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=88',
-  ngorongoro: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1400&q=88',
-  balloon: 'https://images.unsplash.com/photo-1494783367193-149034c05e8f?auto=format&fit=crop&w=1400&q=88',
-  beach: 'https://images.unsplash.com/photo-1505881502353-a1986add3762?auto=format&fit=crop&w=1400&q=88',
-  camp: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=88',
-  walking: 'https://images.unsplash.com/photo-1521292270410-a8c4d716d518?auto=format&fit=crop&w=1400&q=88'
+  zanzibar: 'assets/zanzibar-inspired.png',
+  ngorongoro: 'assets/ngorongoro-inspired.png',
+    beach: 'assets/zanzibar-inspired.png',
+    walking: 'assets/zebras-landscape.jpg'
 };
 
 const formData = {
@@ -74,39 +72,41 @@ function icon(name){
 }
 
 function showHome(){
+  document.body.dataset.view = "home";
   currentStep = 1;
   footer.style.display = 'block';
   app.innerHTML = `
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="hero-copy">
         <div class="eyebrow">Safari, softly done.</div>
         <h1>Kenya & Tanzania,<br><em>beautifully unrushed.</em></h1>
         <p>Private safaris, handpicked stays and unforgettable moments across Kenya and Tanzania — designed at a gentler pace.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" type="button" onclick="startPlanning()">Plan Your Safari →</button>
-          <a class="btn btn-secondary" href="#trips">Explore Trips</a>
+          <a class="btn btn-secondary" href="#trips">Explore Itineraries</a>
         </div>
-        <div class="hero-note">Hakuna Matata — travel <em>pole pole.</em></div>
+        <div class="hero-note"><img class="note-tree" src="assets/acacia.svg" alt="">Hakuna Matata — travel <em>pole pole.</em></div>
       </div>
-      <div class="hero-media"><img src="${IMG.hero}" alt="Lioness on safari"></div>
+      <div class="hero-media"><img src="${IMG.hero}" alt="A lioness standing on a sunlit rock in the savannah" fetchpriority="high" width="2048" height="1366"></div>
     </section>
 
     <section class="section trips-section" id="trips">
       <div class="section-head">
         <div class="kicker">Iconic places · meaningful journeys</div>
-        <h2 class="section-title">Sample Trips</h2>
-        <p class="section-subtitle">A few ways Kenya and Tanzania can come together. Every itinerary is a starting point, not a fixed package.</p>
+        <h2 class="section-title">Safari Itineraries</h2>
+        <p class="section-subtitle">A little inspiration for your own adventure. Every route can be shaped around you.</p>
       </div>
       <div class="trip-grid">
         ${tripCard(IMG.amboseli,'Kenya','Amboseli','Elephants with Kilimanjaro on the horizon.','4–6 days')}
         ${tripCard(IMG.mara,'Kenya','Maasai Mara','Iconic wildlife, golden plains and intimate game drives.','4–7 days')}
         ${tripCard(IMG.serengeti,'Tanzania','Serengeti','Big skies, migration country and long, wild horizons.','5–8 days')}
+        ${tripCard(IMG.ngorongoro,'Tanzania','Ngorongoro','Crater country, green highlands and extraordinary wildlife.','3–5 days')}
         ${tripCard(IMG.tarangire,'Tanzania','Tarangire','Baobabs, wildlife and a quieter safari rhythm.','3–5 days')}
-        ${tripCard(IMG.giraffes,'Tanzania','Ngorongoro & North','Highlands, crater country and beautiful northern circuits.','3–5 days')}
         ${tripCard(IMG.zanzibar,'Tanzania','Zanzibar','End your safari with warm water and island calm.','3–6 days')}
       </div>
     </section>
 
+    <section class="occasion-band" id="occasions"><div><div class="kicker">Some moments deserve somewhere extraordinary</div><h2>A journey for the occasion.</h2></div><div class="occasion-actions"><button type="button" onclick="planOccasion('Honeymoon')">Honeymoons <span>↗</span></button><button type="button" onclick="planOccasion('Anniversary')">Anniversaries <span>↗</span></button><button type="button" onclick="planOccasion('Birthday')">Milestone birthdays <span>↗</span></button></div></section>
     <section class="section how-section" id="how-it-works">
       <div class="section-head">
         <div class="kicker">Simple by design</div>
@@ -124,8 +124,8 @@ function showHome(){
     <section class="section why-section" id="why-us">
       <div class="why-intro">
         <div class="kicker">Why travel with Pole Pole?</div>
-        <h2 class="section-title">Thoughtful travel, without the fuss.</h2>
-        <p class="section-subtitle">Short version: we keep it personal, calm and considered from the first idea to the final day.</p>
+        <h2 class="section-title">Why travel<br>with Pole Pole</h2>
+        <p class="section-subtitle">Thoughtful safaris in Kenya and Tanzania, designed around what matters — to you.</p>
       </div>
       <div class="why-grid">
         ${whyItem('key','Tailor-made','Built around you — not a fixed package.')}
@@ -137,18 +137,10 @@ function showHome(){
       </div>
     </section>
 
-    <section class="section gallery-section" id="gallery">
-      <div class="section-head">
-        <div class="kicker">Real moments · extraordinary places</div>
-        <h2 class="section-title">A glimpse of the journey</h2>
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-item tall"><img src="${IMG.galleryGiraffe}" alt="Giraffe portrait"></div>
-        <div class="gallery-item"><img src="${IMG.galleryZebras}" alt="Zebras on the plains"></div>
-        <div class="gallery-item"><img src="${IMG.galleryLions}" alt="Lion pride resting"></div>
-        <div class="gallery-item"><img src="${IMG.galleryMarabou}" alt="Marabou stork"></div>
-        <div class="gallery-item wide"><img src="${IMG.galleryJacana}" alt="African jacana"></div>
-      </div>
+    <section class="section stories-section" id="stories">
+      <div class="section-head"><div class="kicker">The journey, through your eyes</div><h2 class="section-title">Stories that stay with you.</h2><p class="section-subtitle">The little moments. The unexpected encounters. The memories you bring home.</p></div>
+      <div class="stories-grid">${renderTravellerStories()}</div>
+      <div class="stories-footnote">${hasGuestReviews() ? 'Every story shared with permission.' : 'A preview of our traveller stories — guest reviews will appear here once shared.'}</div>
     </section>
 
     <section class="final-cta">
@@ -159,15 +151,16 @@ function showHome(){
       </div>
     </section>
   `;
+  initReveals();
 }
 
 function tripCard(image,country,title,text,days){
-  return `<article class="trip-card"><img src="${image}" alt="${title}"><div class="trip-copy"><div class="trip-country">${country}</div><h3>${title}</h3><p>${text}</p><div class="trip-meta">${days} →</div></div></article>`;
+  return `<article class="trip-card"><img src="${image}" alt="${title}" loading="lazy" width="500" height="600"><div class="trip-copy"><div class="trip-country">${country}</div><h3>${title}</h3><p>${text}</p><button class="trip-meta" type="button" onclick="planDestination('${country} · ${title}')" aria-label="Plan a ${title} safari">${days} <span aria-hidden="true">→</span></button></div></article>`;
 }
 function howCard(number,title,text){return `<article class="how-card"><div class="how-step">${number}</div><h3>${title}</h3><p>${text}</p></article>`}
 function whyItem(iconName,title,text){return `<article class="why-item"><div class="why-icon">${icon(iconName)}</div><h3>${title}</h3><p>${text}</p></article>`}
 
-function startPlanning(){currentStep=1;footer.style.display='none';renderStep();window.scrollTo(0,0)}
+function startPlanning(){dismissPlanningPrompt();closeMenu();document.body.dataset.view='planner';currentStep=1;footer.style.display='none';renderStep();window.scrollTo({top:0,behavior:'instant'});focusWizard()}
 function renderStep(){footer.style.display='none';({1:renderDestination,2:renderTripStyle,3:renderTravelDate,4:renderExperiences,5:renderAccommodation,6:renderBudget,7:renderTravellers,8:renderContact}[currentStep])()}
 
 function wizardShell(title,description,content){
@@ -218,8 +211,8 @@ function renderExperiences(){
     <div class="option-grid">
       ${photoOption('experiences','Wildlife',IMG.plannerGiraffeDetail)}
       ${photoOption('experiences','Great Migration',IMG.walking)}
-      ${photoOption('experiences','Hot air balloon',IMG.balloon)}
-      ${photoOption('experiences','Beautiful camps',IMG.camp)}
+      ${simpleOption('experiences','Hot air balloon',true)}
+      ${simpleOption('experiences','Beautiful camps',true)}
       ${photoOption('experiences','Indian Ocean',IMG.beach)}
       ${simpleOption('experiences','Family',true)}
       ${simpleOption('experiences','Honeymoon',true)}
@@ -290,17 +283,17 @@ function renderContact(){
 
 function simpleOption(key,value,multiple=false){
   const selected=multiple?formData[key].includes(value):formData[key]===value;
-  return `<button type="button" class="option-card ${selected?'selected':''}" onclick="${multiple?`toggleMultiple('${key}','${jsEscape(value)}')`:`selectSingle('${key}','${jsEscape(value)}')`}">${value}</button>`;
+  return `<button type="button" aria-pressed="${selected}" class="option-card ${selected?'selected':''}" onclick="${multiple?`toggleMultiple('${key}','${jsEscape(value)}')`:`selectSingle('${key}','${jsEscape(value)}')`}">${value}</button>`;
 }
 function singleOption(key,value){return simpleOption(key,value,false)}
 function photoOption(key,value,image){
   const selected=Array.isArray(formData[key])&&formData[key].includes(value);
-  return `<button type="button" class="option-card photo-option ${selected?'selected':''}" style="background-image:url('${image}')" onclick="toggleMultiple('${key}','${jsEscape(value)}')"><span>${value}</span></button>`;
+  return `<button type="button" aria-pressed="${selected}" class="option-card photo-option ${selected?'selected':''}" style="background-image:url('${image}')" onclick="toggleMultiple('${key}','${jsEscape(value)}')"><span>${value}</span></button>`;
 }
-function partyOption(value){return `<button type="button" class="option-card ${formData.party===value?'selected':''}" onclick="selectParty('${jsEscape(value)}')">${value}</button>`}
+function partyOption(value){return `<button type="button" aria-pressed="${formData.party===value}" class="option-card ${formData.party===value?'selected':''}" onclick="selectParty('${jsEscape(value)}')">${value}</button>`}
 function navigationButtons(){return `<div class="wizard-actions"><button class="btn btn-secondary" type="button" onclick="nextStep()">Not sure</button><button class="btn btn-primary" type="button" onclick="nextStep()">Next →</button></div>`}
-function inputField(label,key,type='text'){return `<div class="field"><label>${label}</label><input type="${type}" value="${escapeAttr(formData[key])}" oninput="formData.${key}=this.value"></div>`}
-function chip(key,value){return `<button type="button" class="chip ${formData[key]===value?'selected':''}" onclick="setChip('${key}','${jsEscape(value)}')">${value}</button>`}
+function inputField(label,key,type='text'){return `<div class="field"><label for="field-${key}">${label}</label><input id="field-${key}" type="${type}" value="${escapeAttr(formData[key])}" oninput="formData.${key}=this.value"></div>`}
+function chip(key,value){return `<button type="button" aria-pressed="${formData[key]===value}" class="chip ${formData[key]===value?'selected':''}" onclick="setChip('${key}','${jsEscape(value)}')">${value}</button>`}
 
 function toggleMultiple(key,value){const list=formData[key];formData[key]=list.includes(value)?list.filter(v=>v!==value):[...list,value];renderStep()}
 function selectSingle(key,value){formData[key]=value;renderStep()}
@@ -319,8 +312,8 @@ function selectParty(value){
   renderStep();
 }
 
-function nextStep(){if(currentStep<8){currentStep++;renderStep();window.scrollTo(0,0)}}
-function previousStep(){if(currentStep===1){showHome();window.scrollTo(0,0);return}currentStep--;renderStep();window.scrollTo(0,0)}
+function nextStep(){if(currentStep<8){currentStep++;renderStep();window.scrollTo({top:0,behavior:'instant'});focusWizard()}}
+function previousStep(){if(currentStep===1){showHome();window.scrollTo(0,0);return}currentStep--;renderStep();window.scrollTo({top:0,behavior:'instant'});focusWizard()}
 function months(){return ['January','February','March','April','May','June','July','August','September','October','November','December','Any month','Not sure']}
 function numberOptions(min,max,selected){let html='';for(let i=min;i<=max;i++)html+=`<option value="${i}" ${Number(selected)===i?'selected':''}>${i}</option>`;return html}
 function ageOptions(selected){let html='<option value="">Select age</option>';for(let i=0;i<=17;i++)html+=`<option value="${i}" ${String(selected)===String(i)?'selected':''}>${i}</option>`;return html}
@@ -329,16 +322,15 @@ function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':
 function escapeAttr(value){return escapeHtml(value)}
 
 async function submitEnquiry(){
-  if(!formData.firstName.trim() || !formData.email.trim()){
-    alert('Please enter your first name and email address.');
+  if(!formData.firstName.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())){
+    alert('Please enter your first name and a valid email address.');
     return;
   }
 
   const payload={...formData,submittedAt:new Date().toISOString(),source:'pole-pole-website'};
 
   if(!N8N_WEBHOOK_URL){
-    console.log('Pole Pole Safari Enquiry:',payload);
-    showSuccess();
+    showLocalSummary();
     return;
   }
 
@@ -353,9 +345,110 @@ async function submitEnquiry(){
 }
 
 function showSuccess(){
+  document.body.dataset.view='success';
   footer.style.display='block';
   app.innerHTML=`<section class="success-page"><div class="success-card"><div class="success-check">✓</div><div class="kicker">Enquiry received</div><h1>Thank you, ${escapeHtml(formData.firstName)}.</h1><p>We've received your safari preferences.</p><p>One of our trip planners will review them and get in touch with you soon.</p><button class="btn btn-primary" type="button" onclick="showHome()">Back to Home</button></div></section>`;
   window.scrollTo(0,0);
 }
 
+
+// Homepage interactions. Keep the planner and navigation usable without external libraries.
+let revealObserver;
+let promptSeen = false;
+try { promptSeen = sessionStorage.getItem('pole-pole-prompt-seen') === 'yes'; } catch (_) {}
+const planningDialog = document.getElementById('planning-dialog');
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+function markPromptSeen(){promptSeen=true;try{sessionStorage.setItem('pole-pole-prompt-seen','yes')}catch(_) {}}
+function unlockDialog(){
+  document.body.classList.remove('dialog-open');
+  document.querySelector('.site-header').inert=false;
+  app.inert=false;footer.inert=false;
+}
+function dismissPlanningPrompt(){
+  if(planningDialog.open){planningDialog.close();unlockDialog();markPromptSeen()}
+}
+function openPlanningPrompt(){
+  if(promptSeen || document.body.dataset.view!=='home' || mobileNav.hidden===false) return;
+  // Do not interrupt someone filling a field or navigating with the keyboard.
+  if(document.activeElement && document.activeElement.matches('input,textarea,select')) return;
+  markPromptSeen();planningDialog.showModal();
+  document.body.classList.add('dialog-open');
+  document.querySelector('.site-header').inert=true;app.inert=true;footer.inert=true;
+}
+planningDialog.addEventListener('close',unlockDialog);
+planningDialog.addEventListener('cancel',()=>{markPromptSeen();unlockDialog()});
+planningDialog.addEventListener('click',event=>{
+  if(event.target!==planningDialog)return;
+  const box=planningDialog.getBoundingClientRect();
+  if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dismissPlanningPrompt();
+});
+let scrollFrame=false;
+window.addEventListener('scroll',()=>{
+  if(scrollFrame||promptSeen)return;
+  scrollFrame=true;requestAnimationFrame(()=>{
+    scrollFrame=false;
+    const distance=document.documentElement.scrollHeight-window.innerHeight;
+    if(document.body.dataset.view==='home'&&window.scrollY>Math.max(500,distance*.30))openPlanningPrompt();
+  });
+},{passive:true});
+function closeMenu(){mobileNav.hidden=true;menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Open menu')}
+menuToggle.addEventListener('click',()=>{
+  const open=mobileNav.hidden;mobileNav.hidden=!open;menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu()});
+function goHome(){closeMenu();showHome();window.scrollTo({top:0,behavior:'instant'})}
+document.addEventListener('click',event=>{
+  const link=event.target.closest('a[href^="#"]');
+  if(!link)return;
+  const id=link.getAttribute('href').slice(1);if(!id)return;
+  event.preventDefault();closeMenu();
+  if((document.body.dataset.view!=='home' && id!=='app') || !document.getElementById(id))showHome();
+  const target=document.getElementById(id);
+  if(target){target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});target.setAttribute('tabindex','-1');target.focus({preventScroll:true})}
+});
+function planDestination(destination){
+  if(!formData.regions.includes(destination))formData.regions.push(destination);
+  startPlanning();
+}
+function planOccasion(occasion){formData.occasion=occasion;if(occasion==='Honeymoon'&&!formData.tripStyle.includes('Honeymoon'))formData.tripStyle.push('Honeymoon');startPlanning()}
+function focusWizard(){const title=app.querySelector('h1');if(title){title.tabIndex=-1;title.focus({preventScroll:true})}}
+function initReveals(){
+  if(revealObserver)revealObserver.disconnect();
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}}),{threshold:.08});
+  app.querySelectorAll('.section-head,.trip-card,.how-card,.why-item,.story-card,.occasion-band,.final-cta-copy').forEach((el,i)=>{el.classList.add('reveal');el.style.setProperty('--reveal-delay',`${i%4*65}ms`);revealObserver.observe(el)});
+}
+function guestReviews(){return (window.POLE_POLE_TESTIMONIALS||[]).filter(r=>r&&r.quote&&r.name)}
+function hasGuestReviews(){return guestReviews().length>0}
+function safeStoryImage(value){return /^assets\/[a-zA-Z0-9_./-]+\.(?:jpg|jpeg|png|webp)$/i.test(value||'')?value:IMG.galleryGiraffe}
+function renderTravellerStories(){
+  const reviews=guestReviews();
+  if(reviews.length)return reviews.map(r=>`<article class="story-card"><img src="${escapeAttr(safeStoryImage(r.image))}" alt="${escapeAttr(r.alt||'Safari landscape')}" loading="lazy" width="700" height="500"><div class="story-copy"><span class="quote-mark" aria-hidden="true">“</span><blockquote>${escapeHtml(r.quote)}</blockquote><div class="story-author">${escapeHtml(r.name)}<span>${escapeHtml(r.trip||'Pole Pole traveller')}</span></div></div></article>`).join('');
+  const previews=[
+    {image:IMG.galleryElephants,alt:'Elephants in the savannah',title:'The wonder of a first safari.',text:'A space for a traveller’s own words — the encounter, the feeling, the moment they still talk about.',route:'Kenya · Safari memories'},
+    {image:IMG.galleryZebras,alt:'Zebras together on the plains',title:'Time to simply be there.',text:'A space for a guest’s reflection on the places, people and unhurried days that made their journey personal.',route:'Tanzania · Life on the plains'},
+    {image:IMG.galleryLions,alt:'Lions resting together',title:'Memories, made together.',text:'A space for a shared adventure, told by the people who lived it. Their photographs. Their story.',route:'East Africa · Shared adventures'}
+  ];
+  return previews.map(r=>`<article class="story-card story-preview"><div class="story-photo"><img src="${r.image}" alt="${r.alt}" loading="lazy" width="700" height="500"><span class="preview-label">Story layout preview</span></div><div class="story-copy"><div class="trip-country">${r.route}</div><h3>${r.title}</h3><p>${r.text}</p><span class="story-awaiting">Your travellers’ stories, coming soon</span></div></article>`).join('');
+}
+function showLocalSummary(){
+  document.body.dataset.view='summary';footer.style.display='block';
+  app.innerHTML=`<section class="success-page"><div class="success-card"><div class="kicker">Your safari, taking shape</div><h1>Your ideas are ready, ${escapeHtml(formData.firstName)}.</h1><p>Your enquiry has not been sent. Download your safari preferences and contact our team to take the next step.</p><button class="btn btn-primary" onclick="downloadPreferences()">Download my safari preferences ↓</button><p class="summary-phone"><a href="tel:+989124650161">Call +98 912 465 0161</a></p><button class="btn btn-secondary" onclick="currentStep=8;document.body.dataset.view='planner';renderStep()">Edit my details</button><button class="text-button" onclick="goHome()">Back to home</button></div></section>`;
+  window.scrollTo({top:0,behavior:'instant'});focusWizard();
+}
+function downloadPreferences(){
+  const text='POLE POLE — SAFARI PREFERENCES\nNot submitted online. Please share this file with your travel planner.\n\n'+Object.entries(formData).map(([key,value])=>`${key.replace(/([A-Z])/g,' $1')}: ${Array.isArray(value)?value.join(', '):value}`).join('\n');
+  const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));
+  const link=document.createElement('a');link.href=url;link.download='pole-pole-safari-preferences.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+document.getElementById('copyright-year').textContent=new Date().getFullYear();
 showHome();
+// Keep Tab navigation within the invitation, including when the browser would focus its chrome.
+planningDialog.addEventListener('keydown',event=>{
+  if(event.key!=='Tab')return;
+  const controls=[...planningDialog.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),[tabindex="0"]')];
+  const first=controls[0],last=controls[controls.length-1];
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+});

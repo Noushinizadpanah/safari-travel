@@ -6,61 +6,52 @@
   <meta name="description" content="Pole Pole creates tailor-made safari journeys across Kenya and Tanzania." />
   <meta name="theme-color" content="#f6efe5" />
   <title>Pole Pole | Kenya & Tanzania Safaris</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#app">Skip to content</a>
   <header class="site-header">
-    <button class="brand" type="button" onclick="showHome()" aria-label="Pole Pole home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 42"><path d="M31 5c-8 0-13 4-16 10 6-2 12-1 16 2-3-8 1-12 6-14-1 5 0 9 4 13 4-3 9-4 15-3-2-6-7-10-14-10-1 0-3 1-4 2-4-4-10-5-15-3Z"/><path d="M34 15c-1 7-1 13 0 20M24 36h21M14 39h42"/></svg>
-      </span>
+    <button class="brand" type="button" onclick="goHome()" aria-label="Pole Pole home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 100 68" aria-hidden="true"><g fill="currentColor" stroke="none"><path d="M8 27c-5-2-3-6 3-7-1-4 5-6 11-5 0-5 7-7 13-5 3-6 12-7 17-3 6-4 14-2 16 3 7-2 13 1 14 5 8-1 13 3 12 7 7 1 8 5 2 7l-17 1-13-3-15 3-12-3-13 3-18-1Z"/><path d="m49 58-2-21-14-10 4-2 12 8 2-12 3 1-1 11 15-11 3 2-17 15 1 19 11 4H37l12-4Z"/><path d="M23 64h54v1H23z"/></g><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="m50 43-23-15m26 18 27-18M48 34 22 22m32 13 27-12"/></g></svg></span>
       <span class="brand-copy"><strong>Pole Pole</strong><small>Kenya · Tanzania</small></span>
     </button>
 
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#trips">Trips</a>
+      <a href="#trips">Itineraries</a>
       <a href="#how-it-works">How it works</a>
       <a href="#why-us">Why us</a>
-      <a href="#gallery">Gallery</a>
+      <a href="#stories">Traveller Stories</a>
       <a href="#contact">Contact</a>
-    </nav>
+    </nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">☰</button>
 
     <button class="btn btn-primary header-cta" type="button" onclick="startPlanning()">Plan Your Safari</button>
-  </header>
+  </header><nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="#trips">Safari Itineraries</a><a href="#why-us">Why Pole Pole</a><a href="#how-it-works">How it works</a><a href="#stories">Traveller Stories</a><a href="#contact">Contact</a></nav>
 
-  <main id="app"></main>
+  <main id="app" tabindex="-1"></main>
 
   <footer class="site-footer" id="site-footer">
     <div class="footer-inner">
       <div class="footer-brand-col">
-        <button class="brand footer-brand" type="button" onclick="showHome()" aria-label="Pole Pole home">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 64 42"><path d="M31 5c-8 0-13 4-16 10 6-2 12-1 16 2-3-8 1-12 6-14-1 5 0 9 4 13 4-3 9-4 15-3-2-6-7-10-14-10-1 0-3 1-4 2-4-4-10-5-15-3Z"/><path d="M34 15c-1 7-1 13 0 20M24 36h21M14 39h42"/></svg>
-          </span>
-          <span class="brand-copy"><strong>Pole Pole</strong><small>Safari, softly done.</small></span>
-        </button>
-        <p>Tailor-made Kenya & Tanzania safaris, handpicked stays and meaningful journeys at a gentler pace.</p>
+        <button class="brand footer-brand" type="button" onclick="goHome()" aria-label="Pole Pole home"><span class="brand-mark"><svg viewBox="0 0 100 68" aria-hidden="true"><g fill="currentColor" stroke="none"><path d="M8 27c-5-2-3-6 3-7-1-4 5-6 11-5 0-5 7-7 13-5 3-6 12-7 17-3 6-4 14-2 16 3 7-2 13 1 14 5 8-1 13 3 12 7 7 1 8 5 2 7l-17 1-13-3-15 3-12-3-13 3-18-1Z"/><path d="m49 58-2-21-14-10 4-2 12 8 2-12 3 1-1 11 15-11 3 2-17 15 1 19 11 4H37l12-4Z"/><path d="M23 64h54v1H23z"/></g><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="m50 43-23-15m26 18 27-18M48 34 22 22m32 13 27-12"/></g></svg></span><span class="brand-copy"><strong>Pole Pole</strong><small>Safari, softly done.</small></span></button>
+        <p>Wild places. Personal journeys.<br>A little more time to take it all in.</p>
+        <span class="footer-signature">Kenya & Tanzania, at your pace.</span>
       </div>
-
-      <div class="footer-contact" id="contact">
-        <div class="footer-icon" aria-hidden="true">☎</div>
-        <div><small>Talk to us</small><a href="tel:+989124650161">+98 912 465 0161</a></div>
-      </div>
-
-      <div class="footer-telegram">
-        <div class="footer-icon" aria-hidden="true">✈</div>
-        <div><small>Quick questions?</small><a class="telegram-btn" href="#" onclick="return false;">Telegram Bot</a></div>
-      </div>
+      <div class="footer-column"><span class="footer-drawing" aria-hidden="true">♡</span><h2>Pole Pole</h2><a href="#why-us">Our approach</a><a href="#how-it-works">How it works</a><a href="#stories">Traveller stories</a></div>
+      <div class="footer-column"><span class="footer-drawing" aria-hidden="true">↗</span><h2>Explore</h2><button type="button" onclick="startPlanning()">Safari planner</button><a href="#trips">Safari itineraries</a><a href="#occasions">Special occasions</a></div>
+      <div class="footer-column"><span class="footer-drawing" aria-hidden="true">◎</span><h2>Wild places</h2><button type="button" onclick="planDestination('Kenya · Maasai Mara')">Maasai Mara</button><button type="button" onclick="planDestination('Kenya · Amboseli')">Amboseli</button><button type="button" onclick="planDestination('Tanzania · Serengeti')">Serengeti</button><button type="button" onclick="planDestination('Tanzania · Ngorongoro')">Ngorongoro</button><button type="button" onclick="planDestination('Tanzania · Zanzibar')">Zanzibar</button></div>
+      <div class="footer-column" id="contact"><span class="footer-drawing" aria-hidden="true">✧</span><h2>Need a hand?</h2><a href="tel:+989124650161">+98 912 465 0161</a><p>A real conversation.<br>A safari that feels like you.</p><button class="footer-plan" type="button" onclick="startPlanning()">Let's plan your safari ↗</button></div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Pole Pole. All rights reserved.</span>
-      <span>Kenya · Tanzania · East Africa</span>
-    </div>
+    <div class="footer-bottom"><span>© <span id="copyright-year">2026</span> Pole Pole. All rights reserved.</span><span>Made for a slower kind of adventure.</span><a href="#top" onclick="goHome();return false">Back to top ↑</a></div>
   </footer>
+  <dialog class="planning-dialog" id="planning-dialog" aria-labelledby="popup-title" aria-describedby="popup-description">
+    <button class="dialog-close" type="button" onclick="dismissPlanningPrompt()" aria-label="Close safari invitation" autofocus>×</button>
+    <img class="dialog-image" src="assets/elephant-family.jpg" alt="Elephants exploring the savannah" width="1200" height="500">
+    <div class="dialog-copy"><div class="kicker">Your adventure starts with a little inspiration</div><h2 id="popup-title">Not sure where to go?</h2><p id="popup-description">A few simple questions. A safari shaped around you.<br>Let's find your kind of wild.</p><button class="btn btn-primary" type="button" onclick="startPlanning()">Find My Safari <span aria-hidden="true">→</span></button><button class="dialog-later" type="button" onclick="dismissPlanningPrompt()">I'll keep exploring</button></div>
+  </dialog>
 
+  <noscript><p class="no-script">Please enable JavaScript to explore our itineraries and safari planner. You can also call <a href="tel:+989124650161">+98 912 465 0161</a>.</p></noscript>
+  <script src="testimonials.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
